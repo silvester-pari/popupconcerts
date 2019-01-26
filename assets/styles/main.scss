@@ -121,10 +121,8 @@ header {
 				}
 			}
 
-			.header-menu-active {
-				a {
-					color: $pu-green;
-				}
+			.nuxt-link-active {
+				color: $pu-green;
 
 				&::after {
 					@include pseudo;
@@ -254,11 +252,9 @@ header {
 		[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
 		    display: none;
 		}
-		.li-mobile-active {
+		.nuxt-link-active {
 			background-color: $pu-white;
-			a {
-				color: $pu-black;
-			}
+			color: $pu-black;
 		}
 	}
 }
