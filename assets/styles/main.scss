@@ -1,0 +1,1073 @@
+@import "_setup.scss";
+
+/* TO-DOS*/
+/* - Autoprefixer: style.css*/
+/* Favicon Generator*/
+
+body {
+	/*For initial development - Remove when done*/
+	//background-image: url(../img/Design2g.jpg);
+	//background-position: bottom;
+	//height: 1450px;
+	/* End*/
+
+	background-color: $pu-white;
+	color: $pu-black;
+	// padding: 0 12px;
+	-webkit-font-smoothing: antialiased;
+
+	opacity: 1;
+    transition: 1s opacity;
+}
+
+body.fade-out {
+    opacity: 0;
+    transition: none;
+}
+
+// COMMON ELEMENTS
+
+.highlight {
+	color: $pu-green;
+}
+
+.btn{
+	@include lovelo-black(1.4rem, $pu-white);
+	background-color: $pu-green;
+	border: none;
+	padding: 1.6rem 2rem;
+	margin: 30px 0 20px;
+}
+
+.btn-inverse {
+	background-color: $pu-white;
+	color: $pu-black;
+}
+
+.noscroll { 
+  overflow: hidden;
+}
+
+header, section, footer {
+	max-width: 1000px;
+	@include mq('tablet') {
+		max-width: 700px;	
+	}
+	@include mq('desktop') {
+		max-width: 1000px;	
+	}
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// STYLE
+
+header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+
+	#link-home {
+		flex-basis: 40%;
+		@include mq-ls('phone') {
+			flex-basis: 20%;	
+		}
+		@include mq('tablet') {
+			flex-basis: 20%;	
+		}
+		@include mq('desktop') {
+			flex-basis: 13%;	
+		}
+		
+		#pu-logo {
+			display: inline-block;	
+			height: auto;
+			width: 100%;
+			transition: all .2s ease-in-out;	
+		}
+	}
+
+	nav {
+		flex-basis: 60%;
+		@include mq('desktop') {
+			flex-basis: 87%;	
+		}
+		display: flex;
+		align-items: center;
+		@include mq('desktop') {
+			justify-content: flex-end;	
+		}
+
+		ul {
+			padding-right: 20px;
+			@include mq('desktop') {
+				padding-right: 0px;
+			}
+
+			.header-menu-item {
+				display: none;
+				@include mq('desktop') {
+					display: inline-block;	
+					margin-left: 40px;
+				}
+
+				position: relative;
+				@include lovelo-black($menu);
+
+				a {
+					text-decoration: none;
+					color: $pu-black;
+					border: none;
+				}
+			}
+
+			.header-menu-active {
+				a {
+					color: $pu-green;
+				}
+
+				&::after {
+					@include pseudo;
+					height: 1px;
+					width: 100%;
+					background: $pu-green;
+				}
+			}
+		}
+
+		.li-mobile, .li-mobile a {
+		    color: $pu-white;
+		    font: 14pt "Roboto", sans-serif;
+		    font-weight: 700;
+		    line-height: 1.8;
+		    text-decoration: none;
+		    text-transform: none;
+		    list-style: none;
+		    outline: 0;
+		    display: none;
+		}
+		.li-mobile {
+			margin: 10px 0 10px 0;
+		    width: 100%;
+		    text-align: center;}
+		.li-mobile a:focus {
+		    display: block;
+		    color: #333;
+		    background-color: #eee;
+		    transition: all .5s;
+		}
+
+		#trigger, #burger, #burger:before, #burger:after {
+		    position: fixed;
+		    bottom: 35px;
+		    right: 35px;
+		    background: $pu-white;
+		    width: 30px;
+		    height: 3px;
+		    transition: .2s ease;
+		    cursor: pointer;
+		    z-index: 3;
+		}
+		#menu-toggle, #trigger, #burger, #menu-background, #menu {
+		   	@include mq('desktop') {
+				display: none;
+			}
+		}
+		#burger {
+			bottom: 57px;
+		}
+		#trigger {
+		    height: 25px;
+		    background: none;
+		}
+		#burger:before {
+		    position: absolute;
+		    content: " ";
+		    top: 10px;
+		    left: 0;
+		}
+		#burger:after {
+		    position: absolute;
+		    content: " ";
+		    top: 20px;
+		    left: 0;
+		}
+		#menu-toggle:checked + #trigger + #burger {
+		    bottom: 46px;
+		    transform: rotate(180deg);
+		    transition: transform .2s ease;
+		}
+
+		#menu-toggle:checked + #trigger + #burger:before {
+		    width: 20px;
+		    top: -3px;
+		    left: 18px;
+		    transform: rotate(45deg) translateX(-5px);
+		    transition: transform .2s ease;
+		}
+		#menu-toggle:checked + #trigger + #burger:after {
+		    width: 20px;
+		    top: 3px;
+		    left: 18px;
+		    transform: rotate(-45deg) translateX(-5px);
+		    transition: transform .2s ease;
+		}
+		#menu-background {
+		    position: fixed;
+		    margin: 0; padding: 0;
+		    bottom: 20px; right: 20px;
+		    width: 60px; height: 60px;
+		    background-color: $pu-green;
+		    opacity: 1;
+		    border-radius: 100%;
+		    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+		    transition: all .2s ease-in-out;
+		    z-index: 1;
+		}
+		#menu-toggle:checked ~ #menu-background {
+			width: 4000px;
+			height: 4000px;
+			margin-right: -2000px;
+			margin-bottom: -2000px;
+			opacity: .95;
+		}
+		#menu {
+			position: fixed;
+			display: none;
+			flex-direction: column;
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+		    text-align: center;
+		    margin: 0;
+		    padding: 0;
+		    top: 0;
+		    right: 0;
+		    z-index: 2;
+		}
+		#menu-toggle:checked ~ #menu {
+		    display: flex;
+		}
+		#menu-toggle:checked + #trigger ~ #menu > .li-mobile, .li-mobile a {
+		    display: list-item;
+		}
+		[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+		    display: none;
+		}
+		.li-mobile-active {
+			background-color: $pu-white;
+			a {
+				color: $pu-black;
+			}
+		}
+	}
+}
+
+#tagline {
+	#pu-slogan {
+		flex-basis: 100%;
+		font-size: $huge;
+		@include mq('desktop') {
+			font-size: $huge-desktop;
+		}
+		margin-top: 25px;
+		@include mq('desktop') {
+			margin-top: 100px;
+		}
+    	margin-bottom: 20px;
+	}
+
+	#pu-explanation {
+		flex-basis: 100%;
+		font-size: $medium;
+		@include mq('desktop') {
+			font-size: $medium-desktop;
+		}
+		line-height: 2.4rem;
+		margin-top: 10px;
+		margin-bottom: 5px;
+		@include mq('desktop') {
+			margin-top: 25px;
+			line-height: 3.3rem;
+			margin-bottom: 105px;
+		}
+	}
+}
+
+#frontpage-nextevent {
+	display: flex;
+	flex-wrap: wrap;
+	background-color: $pu-black;
+	color: $pu-white;
+	margin-left: -12px;
+	margin-right: -12px;
+	padding: 40px 12px;
+	@include mq('tablet') {
+		margin-left: auto;
+		margin-right: auto;
+		box-shadow: 400px 0px 0px 0px rgba(23,23,23,1), -400px 0px 0px 0px rgba(23,23,23,1); 	
+	}
+	@include mq('desktop') {
+		padding-top: 130px;
+		padding-bottom: 90px;
+		margin-left: auto;
+		margin-right: auto;
+		box-shadow: 800px 0px 0px 0px rgba(23,23,23,1), -800px 0px 0px 0px rgba(23,23,23,1); 
+	}
+
+	h1 {
+		flex-basis: 100%;
+		@include mq('desktop') {
+			display: none;
+		}
+	}
+
+	.frontpage-fb-eventcover {
+		flex-basis: 100%;
+		@include mq('desktop') {
+			flex-basis: 70%;
+			order: 2;
+		}
+		text-align: center;
+		padding-bottom: 20px;
+
+		img {
+			width: 100%;
+			background-color: #555;
+			box-sizing: border-box;
+			border: 6px solid $pu-white;
+		}
+	}
+
+	.frontpage-fb-eventdescription {
+		flex-basis: 100%;
+		padding-left: 15px;
+		padding-right: 10px;
+		border-left: 3px solid $pu-white;
+		text-justify: justify;
+		@include mq('desktop') {
+			margin-top: -95px;
+			line-height: 150%;
+			padding-right: 60px;
+			padding-left: 0px;
+			border-left: none;
+		}
+	}
+
+	.button-row {
+		display: flex;
+		flex-basis: 100%;
+		justify-content: flex-start;
+
+		.frontpage-fb-more, .frontpage-addtocal {
+			transition: all .2s ease-in-out;
+			&:hover {
+				background-color: $pu-green;
+				color: $pu-white;
+			}
+		}
+		.frontpage-fb-more {
+			margin-right: 10px;
+			color: $pu-black;
+			line-height: 150%;
+			@include mq('desktop') {
+				height: 18px;
+			}
+		}
+
+		.frontpage-addtocal {
+			color: $pu-black;
+			position: relative;
+			cursor: pointer;
+			overflow: hidden;
+			margin-top: 30px;
+			@include mq('desktop') {
+				height: 50px;
+			}
+			.gCal, .iCal {
+				position: absolute;
+			    color: $pu-white;
+				width: 50%;
+				height: 54px;
+				margin-top: 35px;
+				line-height: 380%;
+				pointer-events: none;
+			}
+			.gCal {
+				background-color: #B71C1C;
+				margin-left: -20px;
+				transition: all .2s;
+
+			}
+			.iCal {
+				background-color: $pu-grey;
+				margin-left: calc(50% - 20px);
+				transition: all .5s;
+			}
+			.gCal.show, .iCal.show {
+				margin-top: -18px;
+				pointer-events: all;
+			}
+		}
+	}
+
+	.frontpage-nextevent-desktop-container {
+		@include mq('desktop') {
+			display: flex;
+			flex-basis: 30%;
+			flex-direction: column;
+			order: 1;
+		}
+
+		h1 {
+			display: none;
+			@include mq('desktop') {
+				display: block;
+			}
+		}
+
+		a {
+			text-decoration: none;
+			color: $pu-white;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+}
+
+#eventpage-events {
+	display: flex;
+	flex-wrap: wrap;
+	background-color: $pu-white;
+	color: $pu-black;
+	margin-left: -12px;
+	margin-right: -12px;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-top: 0px;
+	@include mq('tablet') {
+		padding-top: 90px;
+		padding-bottom: 90px;
+		margin-left: auto;
+		margin-right: auto;
+		//box-shadow: 800px 0px 0px 0px rgba(23,23,23,1), -800px 0px 0px 0px rgba(23,23,23,1); 
+	}
+
+	.eventpage-next-container {
+		//padding-bottom: 30px;
+		border-bottom: 2px solid $pu-green;
+	}
+	.eventpage-past-container {
+		padding-top: 30px;
+	}
+
+	.eventpage-fb-eventcover {
+		flex-basis: 100%;
+		@include mq('desktop') {
+			flex-basis: 100%;
+		}
+		text-align: center;
+		padding-bottom: 10px;
+
+		img {
+			width: 100%;
+			background-color: #555;
+			//border: 6px solid $pu-white;
+		}
+	}
+
+	.eventpage-fb-eventdescription {
+		flex-basis: 100%;
+		padding-left: 15px;
+		padding-right: 10px;
+		border-left: 2px solid $pu-green;
+		text-align: left;
+		margin-bottom: 20px;
+		@include mq('desktop') {
+			//margin-top: -95px;
+			line-height: 150%;
+			//padding-right: 60px;
+			padding-left: 15px;
+			//border-left: none;
+		}
+	}
+
+	.button-row {
+		display: flex;
+		flex-basis: 100%;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+
+		.eventpage-pu-more {
+			flex-basis: 100%;
+			//margin-right: 10px;
+			color: $pu-white;
+			background: $pu-green;
+			margin-top: 0;
+			margin-bottom: 10px;
+			text-align: center;
+			line-height: 150%;
+			padding: 1.6rem 2rem;
+			transition: all .2s ease-in-out;
+			&:hover {
+				background-color: $pu-black;
+			}
+			@include mq('tablet'){
+				flex-basis: 28%;
+				margin-top: 15px;
+				margin-right: 10px;
+				margin-bottom: 25px;
+			}
+			@include mq('desktop') {
+				flex-basis: 20%;
+				height: 18px;
+			}
+		}
+		.eventpage-fb-more {
+			flex-basis: 100%;
+			//margin-right: 10px;
+			color: $pu-white;
+			background: #4267b2;
+			text-align: center;
+			line-height: 150%;
+			padding: 1.6rem 2rem;
+			margin-top: 0;
+			margin-bottom: 10px;
+			@include mq('tablet'){
+				flex-basis: 28%;
+				margin-top: 15px;
+				margin-right: 10px;
+				margin-bottom: 25px;
+			}
+			@include mq('desktop') {
+				flex-basis: 20%;
+				height: 18px;
+			}
+		}
+
+		.eventpage-addtocal {
+			flex-basis: 100%;
+			color: $pu-white;
+			background: $pu-black;
+			position: relative;
+			cursor: pointer;
+			overflow: hidden;
+			height: 56px;
+			margin-top: 0;
+			margin-bottom: 10px;
+			//margin-right: 10px;
+			@include mq('phone-small'){
+				height: 54px;
+			}
+			@include mq('tablet'){
+				flex-basis: 28%;
+				margin-top: 15px;
+				margin-right: 10px;
+				height: 52px;
+			}
+			@include mq('desktop') {
+				flex-basis: 25%;
+				height: 50px;
+			}
+			line-height: 100%;
+			transition: all .2s ease-in-out;
+			&:hover {
+				background-color: $pu-green;
+			}
+				.gCal, .iCal {
+					position: absolute;
+				    color: $pu-white;
+					width: 50%;
+					height: 56px;
+					margin-top: 36px;
+					line-height: 400%;
+					@include mq('phone'){
+						height: 54px;
+						margin-top: 45px;
+						line-height: 380%;
+					}
+					@include mq('desktop'){
+						height: 54px;
+						margin-top: 45px;
+						line-height: 450%;
+					}
+					pointer-events: none;
+				}
+				.gCal {
+					background-color: #B71C1C;
+					margin-left: -20px;
+					transition: all .2s;
+
+				}
+				.iCal {
+					background-color: $pu-grey;
+					margin-left: calc(50% - 20px);
+					transition: all .5s;
+				}
+				.gCal.show, .iCal.show {
+					margin-top: -21px;
+					@include mq('phone'){
+						margin-top: -20px;
+					}
+					@include mq('desktop') {
+						margin-top: -23px;
+					}
+					pointer-events: all;
+				}
+			}
+	}
+
+	.eventpage-event-desktop-container {
+		margin-bottom: 30px;
+		@include mq('desktop') {
+			display: flex;
+			flex-basis: 100%;
+			flex-direction: column;
+		}
+
+		h2 {
+			font-size: $medium;
+			@include mq('desktop') {
+				font-size: $medium-desktop;
+			}
+		}
+
+		a {
+			text-decoration: none;
+			color: $pu-black;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+
+}
+
+#eventpage-single {
+
+	display: flex;
+	flex-wrap: wrap;
+	background-color: $pu-white;
+	color: $pu-black;
+	margin-left: -12px;
+	margin-right: -12px;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-top: 0px;
+	@include mq('tablet') {
+		padding-top: 90px;
+		padding-bottom: 90px;
+		margin-left: auto;
+		margin-right: auto;
+		//box-shadow: 800px 0px 0px 0px rgba(23,23,23,1), -800px 0px 0px 0px rgba(23,23,23,1); 
+	}
+
+	.eventpage-next-container {
+		//padding-bottom: 30px;
+		border-bottom: 2px solid $pu-green;
+	}
+	.eventpage-past-container {
+		padding-top: 30px;
+	}
+
+	.eventpage-fb-eventcover {
+		flex-basis: 100%;
+		@include mq('desktop') {
+			flex-basis: 100%;
+		}
+		text-align: center;
+		padding-bottom: 25px;
+
+		img {
+			width: 100%;
+			background-color: #555;
+			//border: 6px solid $pu-white;
+		}
+	}
+
+	.eventpage-fb-eventdescription {
+		flex-basis: 100%;
+		padding-left: 15px;
+		padding-right: 10px;
+		border-left: 2px solid $pu-green;
+		text-align: left;
+		margin-bottom: 20px;
+		@include mq('desktop') {
+			//margin-top: -95px;
+			line-height: 150%;
+			//padding-right: 60px;
+			padding-left: 15px;
+			//border-left: none;
+		}
+	}
+
+	.button-row {
+		display: flex;
+		flex-basis: 100%;
+		justify-content: flex-start;
+
+		.eventpage-fb-more {
+			margin-right: 10px;
+			color: $pu-white;
+			background: #4267b2;
+			margin-top: 15px;
+			margin-bottom: 25px;
+			text-align: center;
+			line-height: 150%;
+			padding: 1.6rem 2rem;
+			@include mq('desktop') {
+				height: 18px;
+			}
+		}
+
+		.eventpage-addtocal {
+			color: $pu-white;
+			background: $pu-black;
+			position: relative;
+			cursor: pointer;
+			overflow: hidden;
+			margin-top: 15px;
+			height: 74px;
+			@include mq('phone-small'){
+				height: 54px;
+			}
+			@include mq('phone'){
+				height: 52px;
+			}
+			@include mq('desktop') {
+				height: 50px;
+			}
+			line-height: 100%;
+			transition: all .2s ease-in-out;
+			&:hover {
+				background-color: $pu-green;
+			}
+				.gCal, .iCal {
+					position: absolute;
+				    color: $pu-white;
+					width: 50%;
+					height: 74px;
+					margin-top: 54px;
+					line-height: 500%;
+					@include mq('phone'){
+						height: 54px;
+						margin-top: 45px;
+						line-height: 380%;
+					}
+					@include mq('desktop'){
+						height: 54px;
+						margin-top: 45px;
+						line-height: 450%;
+					}
+					pointer-events: none;
+				}
+				.gCal {
+					background-color: #B71C1C;
+					margin-left: -20px;
+					transition: all .2s;
+
+				}
+				.iCal {
+					background-color: $pu-grey;
+					margin-left: calc(50% - 20px);
+					transition: all .5s;
+				}
+				.gCal.show, .iCal.show {
+					margin-top: -23px;
+					@include mq('phone'){
+						margin-top: -20px;
+					}
+					@include mq('desktop') {
+						margin-top: -23px;
+					}
+					pointer-events: all;
+				}
+			}
+	}
+
+	.eventpage-event-desktop-container {
+		margin-bottom: 30px;
+		@include mq('desktop') {
+			display: flex;
+			flex-basis: 100%;
+			flex-direction: column;
+		}
+
+		h2 {
+			font-size: $medium;
+			@include mq('desktop') {
+				font-size: $medium-desktop;
+			}
+		}
+
+		a {
+			text-decoration: none;
+			color: $pu-black;
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+#contact {
+	display: flex;
+	flex-wrap: wrap;
+
+	.contact-content {
+		flex-basis: 100%;
+		@include mq('desktop') {
+			flex-basis: 50%;
+		}
+	}
+	#contact-form {
+		flex-basis: 100%;
+		margin-top: 20px;
+		@include mq('desktop') {
+			flex-basis: 50%;
+		}
+		label {
+			width: 100%;
+			display: block;
+			@include lovelo-black;
+			margin-bottom: 5px;
+		}
+		input, textarea {
+			border: none; // reset border
+			background-color: $pu-white;
+			border: 1px solid $pu-green;
+			margin-bottom: 10px;
+			width: 100%;
+			padding: 1.6rem 0rem;
+			@include mq('desktop') {
+				padding: 1.6rem 2rem;
+			}
+			&:focus {
+				border: 1px solid $pu-green;
+			}
+		}
+		#wrap_Inputfield_scf-website {
+			display: none;
+		}
+		#Inputfield_submit {
+			cursor: pointer;
+			border: none;
+			background-color: $pu-green;
+			@include lovelo-black;
+			color: $pu-white;
+			padding: 1.6rem 2rem;
+			transition: all .2s ease-in-out;
+			&:hover {
+				background-color: $pu-black;
+				color: $pu-white;
+			}
+		}
+
+	}
+	.contact-mailchimp {
+		flex-basis: 100%;
+		flex-wrap: wrap;
+		display: flex;
+		justify-content: center;
+		padding-top: 50px;
+		@include mq('desktop') {
+			padding-top: 80px;
+		}
+
+		h2 {
+			flex-basis: 100%;
+			text-align: flex-start;
+			margin-bottom: 50px;
+		}
+
+		#mc_embed_signup{
+			flex-basis: 100%;
+			flex-wrap: wrap;
+			display: flex;
+
+			form {
+				flex-basis: 100%;
+				flex-wrap: wrap;
+				display: flex;
+
+				#mc_embed_signup_scroll{
+					flex-basis: 100%;
+					flex-wrap: wrap;
+					display: flex;
+
+					.mc-field-group {
+						flex-basis: 100%;
+						@include mq('desktop') {
+							flex-basis: 23%;
+						}
+						order: 1;
+						label {
+							@include lovelo-black;
+							margin-bottom: 5px;
+							display: block;
+						}
+						input {
+							border: none;
+							border: 1px solid $pu-green;
+							padding: 1.6rem 0rem;
+							margin-bottom: 10px;
+							width: 100%;
+							@include mq('desktop') {
+								padding: 1.6rem 2rem;
+								width: 71%;
+							}
+							background-color: $pu-white;
+						}
+					}
+
+					#mce-responses {
+						flex-basis: 100%;
+						order: 3;
+					}
+
+					.clear {
+						flex-basis: 10%;
+						order: 2;
+						margin-top: 18px;
+						input {
+							cursor: pointer;
+							border: none;
+							@include lovelo-black;
+							color: $pu-white;
+							background-color: $pu-green;
+							padding: 1.6rem 2rem;
+							transition: all .2s ease-in-out;
+							&:hover {
+								background-color: $pu-black;
+								color: $pu-white;
+							}
+						}
+					}
+				}
+
+			}
+		}
+
+	}
+
+	.form--success--message {
+		margin-top: 40px;
+	}
+
+}
+
+footer {
+	display: flex;
+	flex-wrap: wrap;
+	@include mq('desktop') {
+		align-items: center;
+		justify-content: space-between;	
+	}
+
+	h5 {
+		font-size: $footer;
+	}
+
+	#footer-menu {
+		flex-basis: 100%;
+		@include mq('desktop') {
+			flex-basis: 33%;	
+		}
+
+		ul {
+			display: flex;
+    		justify-content: space-evenly;
+    		@include mq('desktop') {
+				justify-content: flex-start;	
+			}
+
+			li {
+				a {
+					text-decoration: none;
+					color: $pu-black;
+				}
+
+				@include mq('desktop') {
+					margin-right: 20px;	
+				}
+			}
+		}
+	}
+	
+	#footer-social {
+		flex-basis: 100%;
+		@include mq('desktop') {
+			flex-basis: 33%;
+			order: 3;	
+		}
+		margin-top: 20px;
+		margin-bottom: 35px;
+
+		.ul-icons {
+			display: flex;
+    		justify-content: space-evenly;
+    		@include mq('desktop') {
+				justify-content: flex-end;	
+			}
+
+			li {
+				display: inline-block;
+	    		padding-left: 5px;
+	    		padding-right: 5px;
+	    		@include mq('desktop') {
+		    		padding-left: 20px;
+	    			padding-right: 0px;
+				}
+
+	    		a {
+	    			position: relative;
+	    			display: inline-block;
+	    			width: 40px;
+	    			height: 40px;
+	    			border-radius: 50%;
+	    			background-clip: padding-box;
+	    			transition: all .2s ease-in-out;
+
+	    			&:hover {
+						background-color: $pu-green;
+					}
+
+	    			i {
+	    				display: block;
+	    				font-size: 16px;
+	    				top: 50%;
+	   					left: 50%;
+	    				position: absolute;
+	    				transform: translate(-50%,-50%);
+	    			}
+
+	    			.name {
+	    				display: none;
+	    			}
+	    		}
+			}
+		}
+
+		.ul-icons-inverse {
+			li {
+	    		a {
+	    			background-color: $pu-black;
+	    			color: $pu-white;
+	    		}
+			}
+		}
+	}
+
+	#footer-attribution {
+		flex-basis: 100%;
+		@include mq('desktop') {
+			flex-basis: 33%;
+			order: 2;	
+		}
+		display: flex;
+		justify-content: center;
+	}
+
+}

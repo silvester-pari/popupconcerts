@@ -1,0 +1,179 @@
+@import "_reset-src.scss";
+
+/* DEBUG*/
+* {
+	//outline: 1px solid #777 !important;
+}
+
+/* FONTS*/
+@import url(https://fonts.googleapis.com/css?family=Roboto:400italic,700italic,400,700);
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+@font-face {
+	font-family: 'Lovelo Black';
+	src: url('../fonts/LoveloBlack.eot');
+	src: local('../fonts/Lovelo Black'), local('../fonts/LoveloBlack'),
+		url('../fonts/LoveloBlack.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/LoveloBlack.woff2') format('woff2'),
+		url('../fonts/LoveloBlack.woff') format('woff'),
+		url('../fonts/LoveloBlack.ttf') format('truetype'),
+		url('../fonts/LoveloBlack.svg#LoveloBlack') format('svg');
+	font-weight: 900;
+	font-style: normal;
+}
+
+/* COLORS*/
+$pu-green: #16A085;
+$pu-black: #171717;
+$pu-grey: #555555;
+$pu-white: #F7F7F7;
+
+/* MIXINS*/
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+@mixin lovelo-black($size: false, $color: false, $weight: false,  $lh: false) {
+    font-family: 'Lovelo Black', 'Roboto', sans-serif;
+    @if $size { font-size: $size; }
+    @if $color { color: $color; }
+    @if $weight { font-weight: $weight; }
+    @if $lh { line-height: $lh; }
+}
+
+@mixin roboto($size: false, $color: false, $weight: false,  $lh: false) {
+    font-family: 'Roboto', sans-serif;
+    @if $size { font-size: $size; }
+    @if $color { color: $color; }
+    @if $weight { font-weight: $weight; }
+    @if $lh { line-height: $lh; }
+}
+
+$breakpoints: (
+    "phone-small":  380px,
+    "phone":        400px,
+    "phone-wide":   480px,
+    "phablet":      560px,
+    "tablet-small": 640px,
+    "tablet":       768px,
+    "tablet-wide":  1024px,
+    "desktop":      1248px,
+    "desktop-wide": 1440px
+);
+
+@mixin mq($width, $type: min) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+        @if $type == max {
+            $width: $width - 1px;
+        }
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+@mixin mq-ls($height, $type: max) {
+    @if map_has_key($breakpoints, $height) {
+        $height: map_get($breakpoints, $height);
+        @if $type == max {
+            $height: $height - 1px;
+        }
+        @media only screen and (#{$type}-height: $height) {
+            @content;
+        }
+    }
+}
+
+// PAGE IN CONTAINER TO PREVENT CHROME ADDRESS BAR ISSUE
+// html {
+// 	overflow: hidden;
+// }
+
+// html, body {
+// 	height: 100%;
+// 	width: 100%;
+// 	margin: 0;
+// 	padding: 0;
+	//position: absolute; /* prevent overscroll bounce*/                
+//}
+
+// .scroll-container {
+// 	margin: 0 auto;
+//     padding: 0 12px;
+//     height: 100%;
+//     overflow: auto;
+// 	-webkit-overflow-scrolling: touch; /* iOS velocity scrolling */  
+//}
+// html {
+//  overflow: hidden;
+// }
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.scroll-container {
+    margin: 0 auto;
+    padding: 0 12px;
+    height: 100%; 
+}
+
+/* DEFAULT SIZES*/
+html {
+    font-size: 62.5%;
+}
+
+body, p {
+    @include roboto(1.4rem);
+}
+
+p {
+	line-height: 2.4rem;
+    text-align: justify;
+    margin-bottom: 1rem;
+}
+
+em {
+    font-style: italic;
+}
+
+a {
+    color: $pu-black;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5 {
+    @include lovelo-black(2.8rem);
+    @include mq('desktop') {
+		font-size: 3.6rem;	
+	}
+	margin-top: 10px;
+	margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 2.2rem;  
+    @include mq('desktop') {
+        font-size: 3rem;  
+    }    
+}
+
+$huge: 4rem;
+$huge-desktop: 7.85rem;
+$medium: 2rem;
+$medium-desktop: 2.8rem;
+$menu: 1.5rem;
+$footer: 1.2rem;
+
+// DEFAULT SPACING
+header, section, footer {
+	padding-top: 30px;
+	@include mq('desktop') {
+		padding-top: 50px;	
+	}
+	padding-bottom: 40px;
+}
