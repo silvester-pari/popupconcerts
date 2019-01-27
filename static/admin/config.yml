@@ -5,9 +5,9 @@ publish_mode: editorial_workflow
 media_folder: "static/images/uploads"
 public_folder: "/images/uploads"
 collections:
-  - name: "pages"
-    label: "Pages"
-    folder: "/pages"
+  - name: "event"
+    label: "Events"
+    folder: "/events"
     create: true
     slug: "{{slug}}"
     fields:
@@ -17,3 +17,12 @@ collections:
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Event Date", name: "date", widget: "datetime"}
       - {label: "Facebook Link", name: "fb-link", widget: "string"}
+  - name: "page"
+    label: "Pages"
+    folder: "/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
