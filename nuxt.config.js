@@ -13,7 +13,8 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'We organize and support classical music concerts in unusual locations. Bars, clubs, restaurants, shops, private homes become PopUp stages for young musicians!' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }]
   },
 
   /*

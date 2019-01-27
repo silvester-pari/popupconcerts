@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: master
+publish_mode: editorial_workflow
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+collections:
+  - name: "pages"
+    label: "Pages"
+    folder: "/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "event"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Event Date", name: "date", widget: "datetime"}
+      - {label: "Facebook Link", name: "fb-link", widget: "string"}
