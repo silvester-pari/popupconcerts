@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="scroll-container">
     <NavHeader />
     <nuxt />
     <Footer />

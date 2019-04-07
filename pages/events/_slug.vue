@@ -1,7 +1,7 @@
 <template>
-    <section id ="eventpage-single"> 
-        Test
-    </section>
+  <section id="eventpage-single">
+    Test
+  </section>
 </template>
 
 <script>

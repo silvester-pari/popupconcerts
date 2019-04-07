@@ -1,11 +1,19 @@
 <template>
-  <section id="tagline">
-    <h1 id="pu-slogan">Klassisch, aber Leiwand<span class="highlight">*</span></h1>
-    <h2 id="pu-explanation"><span class="highlight">*</span>Klassische Musik trifft gemütliche locations. Nimm dir ein Getränk, lehn dich zurück, lass deine Gedanken schweifen. Erlebe gute Musik Live, hautnah und zum anfassen.</h2>
-  </section>
+  <div>
+    <tag-line></tag-line>
+    <next-event></next-event>
+  </div>
 </template>
 
 <script>
+import TagLine from '@/sections/TagLine.vue'
+import NextEvent from '@/sections/NextEvent.vue'
+export default {
+  components: {
+    TagLine,
+    NextEvent
+  }
+}
 </script>
 
 <style scoped>
