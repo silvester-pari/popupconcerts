@@ -7,22 +7,26 @@ public_folder: "/images/uploads"
 collections:
   - name: "event"
     label: "Event"
-    folder: "/pages/events"
+    folder: "content/events"
     create: true
     slug: "{{slug}}"
     fields:
       - {label: "Layout", name: "layout", widget: "hidden", default: "event"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Featured Image", name: "thumbnail", widget: "image"}
-      - {label: "Event Date", name: "date", widget: "datetime"}
+      - label: "Event Date"
+        name: "date"
+        widget: "object"
+        fields:
+         - {label: "Start date", name: "start-date", widget: "datetime", format: "x"}
+         - {label: "End date", name: "end-date", widget: "datetime", format: "x"}
+      - label: "Event Location"
+        name: "location"
+        widget: "object"
+        fields:
+          - {label: "Name", name: "location-name", widget: "string"}
+          - {label: "Street Address", name: "street", widget: "string"}
+          - {label: "Postal Code", name: "post-code", widget: "string"}
+          - {label: "City", name: "city", widget: "string"}
       - {label: "Facebook Link", name: "fb-link", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
-  - name: "page"
-    label: "Pages"
-    folder: "/pages"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Layout", name: "layout", widget: "hidden", default: "page"}
-      - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
