@@ -3,6 +3,11 @@ layout: event
 title: 'PopUp Concert #01'
 thumbnail: /images/uploads/puc01.jpg
 date: 2017-04-22T17:30:48.415Z
+location:
+  city: Wien
+  location-name: CAFE KORB
+  post-code: '1010'
+  street: Brandstätte 9 / Ecke Tuchlauben
 fb-link: 'https://www.facebook.com/events/503445953376959/'
 ---
 EVERYBODY LOVES CLASSICAL MUSIC -
