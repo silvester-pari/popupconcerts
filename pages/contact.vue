@@ -148,7 +148,20 @@
 </template>
 
 <script>
-export default {}
+export default {
+  head: function() {
+    return {
+      title: 'Contact | PopUp Concerts',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Get in touch with us!'
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <style scoped>

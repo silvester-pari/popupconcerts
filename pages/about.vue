@@ -23,7 +23,20 @@
 </template>
 
 <script>
-export default {}
+export default {
+  head: function() {
+    return {
+      title: 'About | PopUp Concerts',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'About PopUp Concerts'
+        }
+      ]
+    }
+  }
+}
 </script>
 
 <style>
