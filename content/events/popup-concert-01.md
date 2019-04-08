@@ -2,7 +2,8 @@
 layout: event
 title: 'PopUp Concert #01'
 thumbnail: /images/uploads/puc01.jpg
-date: 2017-04-22T17:30:48.415Z
+start-date: '1492882200000'
+end-date: '1492887600000'
 location:
   city: Wien
   location-name: CAFE KORB
