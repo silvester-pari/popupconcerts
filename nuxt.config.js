@@ -3,6 +3,10 @@ const pkg = require('./package')
 module.exports = {
   mode: 'universal',
 
+  env: {
+    BASE_URL: process.env.BASE_URL || 'http://localhost:3000'
+  },
+
   /*
   ** Headers of the page
   */
@@ -11,23 +15,22 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'We organize and support classical music concerts in unusual locations. Bars, clubs, restaurants, shops, private homes become PopUp stages for young musicians!' }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }]
+    script: [
+      { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }
+    ]
   },
 
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#16A085' },
 
   /*
   ** Global CSS
   */
-  css: [
-    '@/assets/styles/main.scss',
-  ],
+  css: ['@/assets/styles/main.scss'],
 
   /*
   ** Plugins to load before mounting the App
@@ -39,8 +42,9 @@ module.exports = {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    // '@nuxtjs/axios',
+    // '@nuxtjs/pwa',
+    'nuxtdown'
   ],
   /*
   ** Axios module configuration
