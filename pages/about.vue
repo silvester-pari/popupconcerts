@@ -8,7 +8,7 @@
 
     <p>&nbsp;</p>
 
-    <h2>Action</h2>
+    <h1>Action</h1>
 
     <p>Bars, Clubs und Kaffeehäuser, Werkstätten, Museen und Geschäftslokale, Dachterrassen, Märkte, Parks – diese und noch weitere sind mögliche Orte für PopUp Concerts. Sie sind „nomadische“ Konzerte mit klassischer Musik, die von Location zu Location wechseln und keinen festen Sitz haben. Dadurch wird einerseits regelmäßigen Besuchern das Kennenlernen neuer, spannender Umgebungen ermöglicht und andererseits das Interesse des Stammpublikums einer neuen Location geweckt.</p>
 

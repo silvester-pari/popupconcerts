@@ -219,7 +219,6 @@
     <![endif]-->
 
     <!-- End Piwik Code -->
-    <script src="https://js.stripe.com/v3"></script>
 
     <!-- Page-specific Head -->
     {{
@@ -242,6 +241,10 @@
       </p>
       <!-- End piwik Code -->
     </noscript>
+    <script>      const stripe = Stripe('pk_test_UtZk9ETtfOcd6HKrNvfIjkJx', {
+      betas: ['checkout_beta_4']
+    })
+    </script>
 
     <!-- Page specific view -->
     {{ APP }}

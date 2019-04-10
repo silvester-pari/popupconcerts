@@ -4,28 +4,36 @@ module.exports = {
   mode: 'universal',
 
   env: {
-    BASE_URL: process.env.BASE_URL || 'http://localhost:3000'
+    BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
+    STRIPE_PUBLIC_KEY: 'pk_test_UtZk9ETtfOcd6HKrNvfIjkJx'
   },
 
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'donation',
+        path: '/donate/*',
+        component: resolve(__dirname, 'pages/donate/index.vue'),
+        props: false
+      })
+    }
+  },
   /*
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    script: [
-      { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }
-    ]
+    script: [{ src: 'https://js.stripe.com/v3/' }]
   },
 
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#16A085' },
+  loading: false,
 
   /*
   ** Global CSS
@@ -42,9 +50,9 @@ module.exports = {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    // '@nuxtjs/axios',
+    '@nuxtjs/axios'
     // '@nuxtjs/pwa',
-    'nuxtdown'
+    // 'nuxtdown'
   ],
   /*
   ** Axios module configuration

@@ -3,7 +3,7 @@
     <div class="contact-content">
       <h1>Contact</h1>
       <p></p>
-      <p>PopUp Concerts e.V.</p>
+      <p>Musik- und Kulturverein PopUp Concerts</p>
 
       <p>Spallartgasse 6/604</p>
 
@@ -99,8 +99,8 @@
         class="_post_token"
       >
     </form>-->
-    <div class="contact-mailchimp">
-      <h2>Mailing List: Next Concerts, News, Updates</h2>
+    <div class="contact-mailchimp" style="justify-content: flex-start;">
+      <h1>Mailing List: Next Concerts, News, Updates</h1>
       <!-- Begin MailChimp Signup Form -->
       <div id="mc_embed_signup">
         <form
@@ -167,5 +167,8 @@ export default {
 <style scoped>
 input {
   color: #171717;
+}
+#contact .contact-content {
+  flex-basis: 100%;
 }
 </style>

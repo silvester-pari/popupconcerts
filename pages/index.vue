@@ -29,5 +29,15 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+/* Transitions using the page hook */
+page-enter-active,
+.page-leave-active {
+  transition: all 0.3s ease-in-out;
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0;
+  transform-origin: 50% 50%;
+}
 </style>

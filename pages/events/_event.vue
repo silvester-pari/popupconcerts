@@ -1,7 +1,19 @@
 <template>
   <section id="eventpage-single">
-    <nuxtdown-body class="body" :body="event.body"/>
-    <button-row :location="'single'"></button-row>
+    <div class="eventpage-next-container">
+      <div class="eventpage-event-desktop-container">
+        <h1>{{ event.title }}</h1>
+        <div class="eventpage-fb-eventcover">
+          <a :href="event['fb-link']" target="blank" :title="event.title + ' on Facebook'">
+            <img class :src="event.thumbnail" :alt="event.title">
+          </a>
+        </div>
+
+        <nuxtdown-body class="eventpage-fb-eventdescription" :body="event.body"/>
+
+        <button-row :event="event" :location="'single'"></button-row>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -9,6 +21,9 @@
 import ButtonRow from '@/components/ButtonRow.vue'
 
 export default {
+  components: {
+    ButtonRow
+  },
   head: function() {
     return {
       title: `${this.event.title} | PopUp Concerts`,
