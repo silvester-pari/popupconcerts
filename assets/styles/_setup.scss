@@ -9,14 +9,15 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400italic,700italic,400,700);
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
 @font-face {
-	font-family: 'Lovelo Black';
-	src: url('../fonts/LoveloBlack.eot');
-	src: local('../fonts/Lovelo Black'), local('../fonts/LoveloBlack'),
-		url('../fonts/LoveloBlack.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/LoveloBlack.woff2') format('woff2'),
-		url('../fonts/LoveloBlack.woff') format('woff'),
-		url('../fonts/LoveloBlack.ttf') format('truetype'),
-		url('../fonts/LoveloBlack.svg#LoveloBlack') format('svg');
+	font-family: 'LoveloBlack';
+	src: url('https://popupconcerts.org/fonts/LoveloBlack.woff2') format('woff2');
+	// src: url('https://popupconcerts.org/fonts/LoveloBlack.eot');
+	// src: local('https://popupconcerts.org/fonts/Lovelo Black'), local('https://popupconcerts.org/fonts/LoveloBlack'),
+	// 	url('https://popupconcerts.org/fonts/LoveloBlack.eot?#iefix') format('embedded-opentype'),
+	// 	url('https://popupconcerts.org/fonts/LoveloBlack.woff2') format('woff2'),
+	// 	url('https://popupconcerts.org/fonts/LoveloBlack.woff') format('woff'),
+	// 	url('https://popupconcerts.orgfonts/LoveloBlack.ttf') format('truetype'),
+	// 	url('https://popupconcerts.org/fonts/LoveloBlack.svg#LoveloBlack') format('svg');
 	font-weight: 900;
 	font-style: normal;
 }
@@ -35,7 +36,7 @@ $pu-white: #F7F7F7;
 }
 
 @mixin lovelo-black($size: false, $color: false, $weight: false,  $lh: false) {
-    font-family: 'Lovelo Black', 'Roboto', sans-serif;
+    font-family: 'LoveloBlack', 'Roboto', sans-serif;
     @if $size { font-size: $size; }
     @if $color { color: $color; }
     @if $weight { font-weight: $weight; }
