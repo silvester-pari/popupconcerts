@@ -94,15 +94,14 @@ export default {
     },
     gDate(date) {
       const tzoffset = new Date(date).getTimezoneOffset() * 60000 // offset in milliseconds
-      // return new Date(date - tzoffset)
       return new Date(new Date(date) - tzoffset)
         .toISOString()
         .replace(/[-:]/g, '')
         .split('.')[0]
     },
     iDate(date) {
-      const tzoffset = new Date().getTimezoneOffset() * 60000 // offset in milliseconds
-      return new Date(parseInt(date) - tzoffset).toISOString().split('.')[0]
+      const tzoffset = new Date(date).getTimezoneOffset() * 60000 // offset in milliseconds
+      return new Date(new Date(date) - tzoffset).toISOString().split('.')[0]
     }
   }
 }

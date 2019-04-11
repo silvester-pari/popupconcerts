@@ -18,6 +18,11 @@
           </nuxt-link>
         </li>
         <li>
+          <nuxt-link to="/donate" class="li-mobile">
+            <h5>Donate</h5>
+          </nuxt-link>
+        </li>
+        <li>
           <nuxt-link to="/contact" class="li-mobile">
             <h5>Contact</h5>
           </nuxt-link>

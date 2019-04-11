@@ -5,7 +5,7 @@ module.exports = {
 
   env: {
     BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
-    STRIPE_PUBLIC_KEY: 'pk_test_UtZk9ETtfOcd6HKrNvfIjkJx'
+    STRIPE_PUBLIC_KEY: 'pk_live_XeDPhYkJZL7lGfNCwpEhjk0D'
   },
 
   router: {
@@ -17,6 +17,10 @@ module.exports = {
         props: false
       })
     }
+  },
+
+  generate: {
+    fallback: '404.html'
   },
   /*
   ** Headers of the page
@@ -50,7 +54,7 @@ module.exports = {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    // '@nuxtjs/axios'
     // '@nuxtjs/pwa',
     // 'nuxtdown'
   ],
