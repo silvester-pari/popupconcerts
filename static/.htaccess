@@ -1,1 +1,11 @@
 ErrorDocument 404 /404.html
+############HTACCESS W4Y START############
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^popupconcerts.org$ [OR]
+RewriteCond %{HTTP_HOST} ^www.popupconcerts.org$
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+#############HTACCESS W4Y END#############
