@@ -3,6 +3,12 @@
     <h1>Donate: {{ donationAmount }}€</h1>
     <p>Bitte wähle deine Zahlungsmethode aus:</p>
     <div class="paymentContainer">
+      <div v-if="loading" class="loadingOverlay">
+        <div class="spinner">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+      </div>
       <button
         @click="launchStripe(donationAmount)"
         class="btn btn-inverse selectPayment creditCard"
@@ -40,7 +46,10 @@
       <div class="paymentContainer">
         <p>
           Oder spende direkt online:
-          <span v-if="enterAmount" style="font-weight: bold;">{{enterAmount}}€</span>
+          <span
+            v-if="enterAmount"
+            style="font-weight: bold;"
+          >{{enterAmount}}€</span>
         </p>
         <div v-if="loading" class="loadingOverlay">
           <div class="spinner">
@@ -117,18 +126,19 @@ export default {
       // }
     },
     launchStripeCustom() {
-      this.loading = true
       this.launchStripe(parseInt(this.enterAmount))
     },
     launchPaypalCustom() {
-      this.loading = true
       this.launchPaypal(parseInt(this.enterAmount))
     },
     launchStripe(amount) {
+      this.loading = true
       this.errorMsg = null
+      const url =
+        'https://wt-32a7736e460e1c36659d4fcab126ad51-0.sandbox.auth0-extend.com/popupconcerts-stripe-session'
       axios
         .get(
-          'https://wt-32a7736e460e1c36659d4fcab126ad51-0.sandbox.auth0-extend.com/popupconcerts-stripe-session',
+          url + '?nocache=' + new Date().getTime(), // Safari fix
           {
             params: {
               amount: amount * 100
@@ -180,6 +190,7 @@ export default {
   display: block;
   padding: 14px;
   margin: 5px 0;
+  font-size: 16px;
 }
 .selectPayment {
   display: block;
