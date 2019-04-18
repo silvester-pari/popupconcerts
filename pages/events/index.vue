@@ -1,12 +1,12 @@
 <template>
   <section id="eventpage-events">
-    <div class="eventpage-next-container">
+    <div v-if="upcomingEvents.length != 0" class="eventpage-next-container">
       <h1># Next</h1>
       <div class="eventpage-event-desktop-container">
         <event-preview v-for="event in upcomingEvents" :key="event.id" :eventId="event.id"/>
       </div>
     </div>
-    <div class="eventpage-past-container">
+    <div v-if="pastEvents.length != 0" class="eventpage-past-container">
       <h1># Past</h1>
       <div class="eventpage-event-desktop-container">
         <event-preview v-for="event in pastEvents" :key="event.id" :eventId="event.id"/>
