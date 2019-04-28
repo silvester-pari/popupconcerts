@@ -37,13 +37,14 @@
         <a href="http://www.popupconcerts.org">www.popupconcerts.org</a>
       </p>
     </div>
-    <!-- <form
+    <form
       id="contact-form"
       class="form js-simplecontactform InputfieldForm"
       name="contact-form"
       method="post"
       action="./"
       data-colspacing="1"
+      netlify
     >
       <div class="form__item form__item--contact_name" id="wrap_Inputfield_contact_name">
         <label class="form__item--label" for="Inputfield_contact_name">Name</label>
@@ -92,13 +93,7 @@
           <span class="ui-button-text">Send</span>
         </button>
       </div>
-      <input
-        type="hidden"
-        name="TOKEN774275815X1554659447"
-        value="IB5.BhWEji9D2hOdQshaM3RBL/IvUh.U"
-        class="_post_token"
-      >
-    </form>-->
+    </form>
     <div class="contact-mailchimp" style="justify-content: flex-start;">
       <h1>Mailing List: Next Concerts, News, Updates</h1>
       <!-- Begin MailChimp Signup Form -->
@@ -169,6 +164,6 @@ input {
   color: #171717;
 }
 #contact .contact-content {
-  flex-basis: 100%;
+  flex-basis: 50%;
 }
 </style>
