@@ -75,7 +75,7 @@
           rows="5"
         ></textarea>
       </div>
-      <div class="form__item">
+      <div class="form__item recaptcha-container">
          <div netlify-recaptcha></div> 
       </div>
       <div class="form__item form__item--submit" id="wrap_Inputfield_submit">
@@ -155,5 +155,8 @@ input {
 }
 #contact .contact-content {
   flex-basis: 50%;
+}
+.recaptcha-container {
+  margin-bottom: 8px;
 }
 </style>
