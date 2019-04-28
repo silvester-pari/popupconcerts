@@ -44,7 +44,7 @@
       method="POST"
       action="/contact/success"
       data-colspacing="1"
-      netlify
+      data-netlify="true"
     >
       <div class="form__item form__item--contact_name" id="wrap_Inputfield_contact_name">
         <label class="form__item--label" for="Inputfield_contact_name">Name</label>
@@ -75,18 +75,8 @@
           rows="5"
         ></textarea>
       </div>
-      <div class="form__item form__item--scf-website" id="wrap_Inputfield_scf-website">
-        <label class="form__item--label" for="Inputfield_scf-website">scf-website</label>
-        <input
-          id="Inputfield_scf-website"
-          class="InputfieldMaxWidth"
-          name="scf-website"
-          type="text"
-          maxlength="2048"
-        >
-      </div>
-      <div class="form__item form__item--scf-date field--required" id="wrap_scf-date">
-        <input id="scf-date" class="required" name="scf-date" value="1554659447" type="hidden">
+      <div class="form__item">
+         <div netlify-recaptcha></div> 
       </div>
       <div class="form__item form__item--submit" id="wrap_Inputfield_submit">
         <button id="Inputfield_submit" class="button" name="submit" value="Send" type="submit">
