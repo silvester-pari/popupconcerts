@@ -41,8 +41,8 @@
       id="contact-form"
       class="form js-simplecontactform InputfieldForm"
       name="contact-form"
-      method="post"
-      action="./"
+      method="POST"
+      action="/contact/success"
       data-colspacing="1"
       netlify
     >
