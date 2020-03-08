@@ -2,12 +2,15 @@
   <div>
     <tag-line></tag-line>
     <next-event></next-event>
+    <photo-gallery></photo-gallery>
   </div>
 </template>
 
 <script>
 import TagLine from '@/sections/TagLine.vue'
+import PhotoGallery from '@/sections/PhotoGallery.vue'
 import NextEvent from '@/sections/NextEvent.vue'
+
 export default {
   head: function() {
     return {
@@ -24,6 +27,7 @@ export default {
   },
   components: {
     TagLine,
+    PhotoGallery,
     NextEvent
   }
 }
